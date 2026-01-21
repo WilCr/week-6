@@ -1,13 +1,16 @@
 # Use lightweight nginx image
 FROM nginx:alpine
 
-# Copy static files to nginx html directory
-COPY index.html /usr/share/nginx/html/
-COPY style.css /usr/share/nginx/html/
-COPY script.js /usr/share/nginx/html/
-COPY images/ /usr/share/nginx/html/images/
+# Copy nginx configuration
+COPY week-6/nginx.conf /etc/nginx/nginx.conf
 
-# Expose port 80
+# Copy static files to nginx html directory
+COPY week-6/index.html /usr/share/nginx/html/
+COPY week-6/style.css /usr/share/nginx/html/
+COPY week-6/script.js /usr/share/nginx/html/
+COPY week-6/images/ /usr/share/nginx/html/images/
+
+# Expose port 80 (Railway will map this automatically)
 EXPOSE 80
 
 # Start nginx
